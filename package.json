@@ -1,9 +1,12 @@
 {
-  "name": "pinst",
-  "version": "2.1.1",
+  "name": "pinst-lite",
+  "version": "2.1.0-0",
   "description": "Enable or disable npm postinstall hook",
   "main": "index.js",
-  "bin": "bin.js",
+  "bin": {
+    "pinst": "bin.js",
+    "pinst-lite": "bin.js"
+  },
   "files": [
     "index.js",
     "bin.js"
@@ -16,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/typicode/pinst.git"
+    "url": "git+https://github.com/NickKaramoff/pinst.git"
   },
   "keywords": [
     "npm",
@@ -25,7 +28,7 @@
     "dev",
     "devpostinstall"
   ],
-  "author": "typicode <typicode@gmail.com>",
+  "author": "Nikita Karamov <nick@karamoff.dev>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/typicode/pinst/issues"
