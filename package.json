@@ -1,6 +1,6 @@
 {
   "name": "pinst-lite",
-  "version": "2.1.0-0",
+  "version": "2.2.0",
   "description": "Enable or disable npm postinstall hook",
   "main": "index.js",
   "bin": {
