@@ -36,11 +36,11 @@
   },
   "homepage": "https://github.com/NickKaramoff/pinst-lite#readme",
   "dependencies": {
+    "detect-indent": "^6.0.0",
     "graceful-fs": "^4.2.4",
     "lodash.mapkeys": "^4.6.0",
     "sade": "^1.7.4",
-    "strip-bom": "^4.0.0",
-    "write-json-file": "^4.3.0"
+    "strip-bom": "^4.0.0"
   },
   "devDependencies": {
     "eslint": "^7.13.0",

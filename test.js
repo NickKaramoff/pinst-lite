@@ -1,5 +1,4 @@
 const util = require('./util')
-const writeJsonFile = require('write-json-file')
 const {
   enableScript,
   enableAndSave,
@@ -33,13 +32,11 @@ test('enableScript', () => {
 
 test('enableAndSave', () => {
   util.loadJsonFileSync = jest.fn(() => disabledPkg)
-  writeJsonFile.sync = jest.fn()
+  util.writeJsonFileSync = jest.fn()
 
   enableAndSave(pkgFile)
   expect(util.loadJsonFileSync).toHaveBeenCalledWith(pkgFile)
-  expect(writeJsonFile.sync).toHaveBeenCalledWith(pkgFile, enabledPkg, {
-    detectIndent: true,
-  })
+  expect(util.writeJsonFileSync).toHaveBeenCalledWith(pkgFile, enabledPkg)
 })
 
 test('disableScript', () => {
@@ -50,11 +47,9 @@ test('disableScript', () => {
 
 test('disableAndSave', () => {
   util.loadJsonFileSync = jest.fn(() => enabledPkg)
-  writeJsonFile.sync = jest.fn()
+  util.writeJsonFileSync = jest.fn()
 
   disableAndSave(pkgFile)
   expect(util.loadJsonFileSync).toHaveBeenCalledWith(pkgFile)
-  expect(writeJsonFile.sync).toHaveBeenCalledWith(pkgFile, disabledPkg, {
-    detectIndent: true,
-  })
+  expect(util.writeJsonFileSync).toHaveBeenCalledWith(pkgFile, disabledPkg)
 })

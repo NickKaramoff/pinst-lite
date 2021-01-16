@@ -1,9 +1,7 @@
 const util = require('./util')
-const writeJsonFile = require('write-json-file')
 const mapKeys = require('lodash.mapkeys')
 
 const pkgFile = 'package.json'
-const writeJsonFileOpts = { detectIndent: true }
 
 // Rename key in object without changing its position
 function renameKey(obj, prevKey, nextKey) {
@@ -32,13 +30,13 @@ function disableScript(pkg, name) {
 function enableAndSave() {
   const pkg = util.loadJsonFileSync(pkgFile)
   const newPkg = enableScript(enableScript(pkg, 'postinstall'), 'install')
-  writeJsonFile.sync(pkgFile, newPkg, writeJsonFileOpts)
+  util.writeJsonFileSync(pkgFile, newPkg)
 }
 
 function disableAndSave() {
   const pkg = util.loadJsonFileSync(pkgFile)
   const newPkg = disableScript(disableScript(pkg, 'postinstall'), 'install')
-  writeJsonFile.sync(pkgFile, newPkg, writeJsonFileOpts)
+  util.writeJsonFileSync(pkgFile, newPkg)
 }
 
 module.exports = {
