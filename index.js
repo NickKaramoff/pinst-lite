@@ -1,4 +1,4 @@
-const loadJsonFile = require('load-json-file')
+const util = require('./util')
 const writeJsonFile = require('write-json-file')
 const mapKeys = require('lodash.mapkeys')
 
@@ -30,13 +30,13 @@ function disableScript(pkg, name) {
 }
 
 function enableAndSave() {
-  const pkg = loadJsonFile.sync(pkgFile)
+  const pkg = util.loadJsonFileSync(pkgFile)
   const newPkg = enableScript(enableScript(pkg, 'postinstall'), 'install')
   writeJsonFile.sync(pkgFile, newPkg, writeJsonFileOpts)
 }
 
 function disableAndSave() {
-  const pkg = loadJsonFile.sync(pkgFile)
+  const pkg = util.loadJsonFileSync(pkgFile)
   const newPkg = disableScript(disableScript(pkg, 'postinstall'), 'install')
   writeJsonFile.sync(pkgFile, newPkg, writeJsonFileOpts)
 }
