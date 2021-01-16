@@ -1,52 +1,28 @@
 #!/usr/bin/env node
-const meow = require('meow')
+const sade = require('sade')
 const { enableAndSave, disableAndSave } = require('./index')
 
-const cli = meow(
-  `
-  Usage
-    $ pinst 
+const cli = sade('pinst', true)
+  .version(require('./package.json').version)
+  .describe('Enable or disable npm postinstall hook')
+  .option('--enable, -e', 'Enable postinstall hook')
+  .option('--disable, -d', 'Disable postinstall hook')
+  .option('--silent, -s')
+  .example('--enable')
+  .action((opts) => {
+    if (opts.enable) {
+      if (!opts.silent) console.log('pinst enable')
+      return enableAndSave()
+    }
 
-  Options
-    --enable, -e   Enable postinstall hook
-    --disable, -d  Disable postinstall hook
-    --silent, -s
+    if (opts.disable) {
+      if (!opts.silent) console.log('pinst disable')
+      return disableAndSave()
+    }
 
-  Examples
-    $ pinst --enable
-`,
-  {
-    flags: {
-      enable: {
-        type: 'boolean',
-        alias: 'e',
-      },
-      disable: {
-        type: 'boolean',
-        alias: 'd',
-      },
-      silent: {
-        type: 'boolean',
-        alias: 's',
-      },
-    },
-  }
-)
+    // No known flag provided
+    cli.help()
+    process.exit(1)
+  })
 
-function run(cli) {
-  if (cli.flags.enable) {
-    if (!cli.flags.silent) console.log('pinst enable')
-    return enableAndSave()
-  }
-
-  if (cli.flags.disable) {
-    if (!cli.flags.silent) console.log('pinst disable')
-    return disableAndSave()
-  }
-
-  // No known flag provided
-  console.log(cli.showHelp())
-  process.exit(1)
-}
-
-run(cli)
+cli.parse(process.argv)
