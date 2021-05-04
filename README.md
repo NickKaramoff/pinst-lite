@@ -1,15 +1,15 @@
-# pinst-lite ![Node.js CI](https://github.com/NickKaramoff/pinst-lite/workflows/Node.js%20CI/badge.svg) [![npm](https://img.shields.io/npm/v/pinst-lite.svg)](https://www.npmjs.com/package/pinst-lite)
+# pinst-lite (DEPRECATED)
 
+> This was a fork of [pinst](https://github.com/typicode/pinst) package with a smaller dependency graph which was achieved by using alternative depepndencies.
+>
+> In the meantime, [pinst](https://github.com/typicode/pinst) reduced its dependency count to 1 and is now the preferred package to use.
+
+<!--
 > `pinst-lite` lets you have `postinstall` hook that runs only in dev 🍺
 
 This can be useful if you want to automatically run commands just after `npm install`, but don't want your package users to be affected.
 
 Alternatively, you can also use it the other way around and prevent `postinstall` hook to run in dev.
-
-> This is a fork of [pinst](https://github.com/typicode/pinst) package with a smaller dependency graph which is achieved by using alternative depepndencies.
->
-> While this can be used as a drop-in replacement for [pinst](https://github.com/typicode/pinst),
-> there is no guarantee that your build won't break. Use with caution!
 
 ## Usage
 
@@ -62,7 +62,9 @@ By inverting commands, you can also use `pinst-lite` to enable `postinstall` for
 
 `pinst-lite` also supports `install` alias.
 
+-->
+
 ## License
 
-MIT - [Nikita Karamov](https://github.com/NickKaramoff)
+MIT - [Nikita Karamov](https://github.com/NickKaramoff)  
 MIT - [Typicode :cactus:](https://github.com/typicode)
